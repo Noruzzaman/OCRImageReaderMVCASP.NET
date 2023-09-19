@@ -1,0 +1,136 @@
+﻿@using DemoOCRNew.Models
+@model UserModel
+<br />
+<br />
+<style>
+
+    * {
+  box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: lightseagreen;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+ background-color: #33D7FF;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-50 {
+  float: left;
+  width: 50%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+}
+</style>
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+{
+
+    <div class="container">
+            <div class="text-center">
+              <h5>Image Reader(Optical character recognition- OCR) Using ASP.NET MVC </h5>
+              <hr/>
+            </div>
+            <br/>
+        <div class="row">
+            <div class="col-25">
+            </div>
+            <div class="col-25">
+                <label for="fname">Selecet Language</label>
+            </div>
+            <div class="col-25">
+
+                @Html.DropDownList("SelectLanguageType", new SelectList(Enum.GetValues(typeof(LanguageType))),"--Select language--")
+
+            </div>
+            <div class="col-25">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-25">
+            </div>
+            <div class="col-25">
+                <label for="lname">Select File </label>
+            </div>
+            <div class="col-50">
+                <input  type="file" name="formFile" />
+            </div>
+
+        </div>
+      
+      
+        <div class="row">
+            <div class="col-50">
+            </div>
+            <div class="col-25">
+                <input type="submit" value="submit" />
+            </div>
+            <div class="col-25">
+           
+               </div>
+        </div>
+
+        <div class="row">
+
+            
+                <div class="text-center">
+            <div class="row">
+                <h6>Result here</h6>
+                <hr />
+
+            </div>
+            <div class="row">
+                <p style="color:red;font-weight:bold;">
+
+                    @ViewBag.Message
+
+                </p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+}
